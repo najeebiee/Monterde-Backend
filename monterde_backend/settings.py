@@ -75,10 +75,20 @@ WSGI_APPLICATION = 'monterde_backend.wsgi.application'
 
 DATABASES = {
     'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'monterde_db',
+        'USER': 'root',
+        'PASSWORD': '',
+        'HOST': '127.0.0.1',
+        'PORT': '3306',
+    },
+    'offline': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
+DATABASE_ROUTERS = ['monterde_backend.db_router.OfflineRouter']
 
 
 # Password validation
