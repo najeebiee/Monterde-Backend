@@ -14,6 +14,4 @@ router.register(r"meterreadings", MeterReadingViewSet)
 router.register(r"visitorlogs", VisitorLogViewSet)
 router.register(r"payments", PaymentViewSet)
 
-urlpatterns = [
-    path("api/", include(router.urls)),
-]
+urlpatterns = router.urls

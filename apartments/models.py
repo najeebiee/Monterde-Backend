@@ -25,7 +25,7 @@ class Unit(models.Model):
         Apartment, related_name='units', on_delete=models.CASCADE)
     floor = models.PositiveIntegerField()
     max_tenants = models.PositiveIntegerField(default=1)
-    unit_price = models.FloatField(max_digits=10, decimal_places=2)
+    unit_price = models.DecimalField(max_digits=10, decimal_places=2)
     status = models.CharField(
         max_length=20, choices=STATUS_CHOICES, default='vacant')
 
@@ -97,8 +97,8 @@ class MeterReading(models.Model):
         Unit, related_name='meter_readings', on_delete=models.CASCADE)
     month = models.DateField(
         help_text="Use the first day of the month to represent the month")
-    previous_reading = models.FloatField(max_digits=10, decimal_places=2)
-    current_reading = models.FloatField(max_digits=10, decimal_places=2)
+    previous_reading = models.DecimalField(max_digits=10, decimal_places=2)
+    current_reading = models.DecimalField(max_digits=10, decimal_places=2)
     reading_date = models.DateTimeField(auto_now_add=True)
     notes = models.TextField(blank=True, null=True)
 
@@ -121,7 +121,7 @@ class Payment(models.Model):
         Tenant, related_name='payments', on_delete=models.CASCADE)
     unit = models.ForeignKey(
         Unit, related_name='payments', on_delete=models.CASCADE)
-    amount = models.FloatField(max_digits=10, decimal_places=2)
+    amount = models.DecimalField(max_digits=10, decimal_places=2)
     method = models.CharField(max_length=20, choices=PAYMENT_METHOD)
     payment_date = models.DateTimeField(auto_now_add=True)
     notes = models.TextField(blank=True, null=True)

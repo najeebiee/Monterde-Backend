@@ -1,7 +1,9 @@
 from rest_framework import viewsets
 from apartments.models import Apartment, Unit, Tenant, MeterReading, VisitorLog, Payment
-from api.serializers import (ApartmentSerializer, UnitSerializer, TenantSerializer,
-                             MeterReadingSerializer, VisitorLogSerializer, PaymentSerializer)
+from apartments.api.serializers import (
+    ApartmentSerializer, UnitSerializer, TenantSerializer,
+    MeterReadingSerializer, VisitorLogSerializer, PaymentSerializer
+)
 
 
 class ApartmentViewSet(viewsets.ModelViewSet):
