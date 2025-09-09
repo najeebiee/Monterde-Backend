@@ -23,11 +23,17 @@ class Command(BaseCommand):
                     # Create new tenant in MySQL
                     Tenant.objects.using('online').create(
                         id=tenant.id,
-                        name=tenant.name,
+                        first_name=tenant.first_name,
+                        middle_name=tenant.middle_name,
+                        last_name=tenant.last_name,
+                        contact_number=tenant.contact_number,
+                        date_of_birth=tenant.date_of_birth,
+                        sex=tenant.sex,
+                        original_address=tenant.original_address,
                         email=tenant.email,
-                        phone=tenant.phone,
-                        apartment=tenant.apartment
+                        unit=tenant.unit  # careful: must exist in MySQL
                     )
+
                     self.stdout.write(f"Synced tenant {tenant.name} to MySQL")
                 else:
                     self.stdout.write(

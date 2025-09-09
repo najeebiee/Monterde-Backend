@@ -23,7 +23,7 @@ class OfflineRouter:
         try:
             # Try connecting to MySQL (default database)
             socket.create_connection(("127.0.0.1", 3306), timeout=1)
-            return 'default'
+            return 'online'
         except OSError:
             # If connection fails, use 'offline' database
-            return 'offline'
+            return 'default'

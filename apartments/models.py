@@ -13,6 +13,8 @@ class Apartment(models.Model):
     def __str__(self):
         return self.name
 
+    last_synced = models.DateTimeField(null=True, blank=True)
+
 
 class Unit(models.Model):
     STATUS_CHOICES = [
@@ -53,6 +55,8 @@ class Unit(models.Model):
     def __str__(self):
         return f"Unit {self.id} in {self.apartment.name}"
 
+    last_synced = models.DateTimeField(null=True, blank=True)
+
 
 class Tenant(models.Model):
     SEX_CHOICES = [
@@ -78,6 +82,8 @@ class Tenant(models.Model):
     def __str__(self):
         return f"{self.first_name} {self.last_name}"
 
+    last_synced = models.DateTimeField(null=True, blank=True)
+
 
 class VisitorLog(models.Model):
     tenant = models.ForeignKey(
@@ -90,6 +96,8 @@ class VisitorLog(models.Model):
     visitor_contact = models.CharField(max_length=15)
     visit_date = models.DateTimeField(auto_now_add=True)
     purpose_of_visit = models.TextField()
+
+    last_synced = models.DateTimeField(null=True, blank=True)
 
 
 class MeterReading(models.Model):
@@ -107,6 +115,8 @@ class MeterReading(models.Model):
 
     def __str__(self):
         return f"Meter Reading for Unit {self.unit} on {self.reading_date}"
+
+    last_synced = models.DateTimeField(null=True, blank=True)
 
 
 class Payment(models.Model):
@@ -128,3 +138,5 @@ class Payment(models.Model):
 
     def __str__(self):
         return f"Payment of {self.amount} by {self.tenant.first_name} {self.tenant.last_name} on {self.payment_date}"
+
+    last_synced = models.DateTimeField(null=True, blank=True)
